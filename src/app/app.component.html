@@ -1,0 +1,336 @@
+
+<!-- =============================================== -->
+
+<div>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<form action="" [formGroup]="myForm" #purchaseForm="ngForm" >
+   <div class="row p-3">
+    <!-- Client Name -->
+    <div class="col-3">
+      <label for="clientName" class="form-label">Client Name</label>
+      <span *ngIf="myForm?.get('clientName')?.invalid" class="text-danger ms-2" >*</span>
+      <div class="custom-select-icon">
+        <select formControlName="clientName" class="form-control" required>
+          <option>Collabera - Collabera Inc</option>
+        </select>
+        <i class="fas fa-times clear-selection"></i> 
+        <i class="fas fa-caret-down"></i> 
+      </div>
+      <div *ngIf="myForm?.get('clientName')?.invalid && purchaseForm.submitted" class="text-danger">Client Name is required</div>
+    </div>
+
+    <!-- Purchase Order Type -->
+    <div class="col-3">
+      <label for="orderType" class="form-label">Purchase Order Type</label>
+      <span *ngIf="myForm?.get('orderType')?.invalid" class="text-danger ms-2" >*</span>
+      <div class="custom-select-icon">
+        <select formControlName="orderType" class="form-control" required>
+          <option>Group PO</option>
+          <option>Individual PO.</option>
+        </select>
+        <i class="fas fa-times clear-selection"></i> 
+        <i class="fas fa-caret-down"></i> 
+      </div>
+      <div *ngIf="myForm?.get('orderType')?.invalid && purchaseForm.submitted" class="text-danger">Purchase Order Type is required</div>
+
+    </div>
+  
+    <!-- Purchase Order No -->
+    <div class="col-3">
+      <label for="orderNo" class="form-label">Purchase Order No</label>
+      <span *ngIf="myForm?.get('orderNo')?.invalid" class="text-danger ms-2" >*</span>
+
+      <input type="text" formControlName="orderNo" class="form-control" placeholder="PO Number">
+      <div *ngIf="myForm?.get('orderNo')?.invalid && purchaseForm.submitted" class="text-danger">Purchase Order No is required</div>
+
+    </div>
+  
+    <!-- Received On -->
+    <div class="col-3">
+      <label for="receivedOn" class="form-label">Received On</label>
+      <span *ngIf="myForm?.get('receivedOn')?.invalid" class="text-danger ms-2" >*</span>
+
+      <input type="date" formControlName="receivedOn" class="form-control" placeholder="Received On">
+      <div *ngIf="myForm?.get('receivedOn')?.invalid && purchaseForm.submitted" class="text-danger">Received On is required</div>
+
+    </div>
+  </div>
+  
+  <div class="row p-3">
+    <!-- Received From Name -->
+    <div class="col-3">
+      <label for="receivedFromName" class="form-label">Received From</label>
+      <span *ngIf="myForm?.get('receivedFromName')?.invalid" class="text-danger ms-2" >*</span>
+
+      <input type="text" formControlName="receivedFromName" class="form-control" placeholder="Received From Name">
+      <div *ngIf="myForm?.get('receivedFromName')?.invalid && purchaseForm.submitted" class="text-danger">Received From Name is required</div>
+
+    </div>
+
+    <!-- Received From email -->
+    <div class="col-3">
+      <label for="receivedFromEmail" class="form-label"></label>
+      <span *ngIf="myForm?.get('receivedFromEmail')?.invalid" class="text-danger ms-2" >*</span>
+
+      <input type="text" formControlName="receivedFromEmail" class="form-control mt-2" placeholder="Received From Email ID">
+      <div *ngIf="myForm?.get('receivedFromEmail')?.invalid && purchaseForm.submitted" class="text-danger">Received From Email ID is required</div>
+
+    </div>
+
+    <div class="col-3">
+      <div class="d-flex py-2" style="margin-top: -10px;">
+        <!-- PO Start Date -->
+        <div class="col-sm">
+          <label for="startDate" class="form-label">PO Start Date</label>
+          <span *ngIf="myForm?.get('startDate')?.invalid" class="text-danger ms-2" >*</span>
+
+          <input type="date" formControlName="startDate" class="form-control" placeholder="Start Date" style="width: 90%;">
+        <div *ngIf="myForm?.get('startDate')?.invalid && purchaseForm.submitted" class="text-danger">PO Start Date is required</div>
+
+        </div>
+        <!-- PO End Date -->
+        <div class="col-sm">
+          <label for="endDate" class="form-label">PO End Date</label>
+          <span *ngIf="myForm?.get('endDate')?.invalid" class="text-danger ms-2" >*</span>
+
+          <input type="date" formControlName="endDate" class="form-control" placeholder="End Date" style="width: 90%;">
+          <div *ngIf="myForm?.get('endDate')?.invalid && purchaseForm.submitted" class="text-danger">PO End Date is required</div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="col-3">
+      <div class="row py-2" style="margin-top: -10px;">
+        <!-- Budget -->
+        <div class="col-sm">
+          <label for="budget" class="form-label">Budget</label>
+          <span *ngIf="myForm?.get('budget')?.invalid" class="text-danger ms-2" >*</span>
+
+          <input type="text" formControlName="budget" class="form-control" placeholder="Budget">
+          <div *ngIf="myForm?.get('budget')?.invalid && purchaseForm.submitted" class="text-danger">budget is required</div>
+        </div>
+
+        <!-- Currency -->
+        <div class="col-sm">
+          <label for="currency" class="form-label">Currency</label>
+          <span *ngIf="myForm?.get('currency')?.invalid" class="text-danger ms-2" >*</span>
+
+          <div class="custom-select-icon">
+            <select  formControlName="currency" class="form-control" required>
+              <option >USD - Dollars (s)</option>
+            </select>
+            <i class="fas fa-times clear-selection"></i> 
+            <i class="fas fa-caret-down"></i>
+          </div>
+          <div *ngIf="myForm?.get('currency')?.invalid && purchaseForm.submitted" class="text-danger">currency is required</div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-body-secondary d-flex px-3 py-1">
+    <div class="me-auto">
+      <label for=""> Talent Detail</label>
+    </div>
+    <div class="">
+      <button class="bg-transparent border-1 px-2 py-1 rounded-5" (click)="createNewForm()">+ Add Another</button>
+    </div>
+  </div>
+
+  <div *ngFor="let talentForm of forms; let i = index">
+    <form [formGroup]="talentForm">  
+      <div class="talentDetails bg-body-secondary mt-3 mb-4" id="talentDetails">
+        <div class="row p-3 ">
+          <div class="col-3">
+            <label for="jobTitle" class="form-label">Job Title/REQ Name</label>
+          <span *ngIf="myForm?.get('jobTitle')?.invalid" class="text-danger ms-2" >*</span>
+
+            <div class="custom-select-icon">
+              <select class="form-control" formControlName="jobTitle" required>
+                <option>Application Development</option>
+                <option>Business Administrators</option>
+              </select>
+              <i class="fas fa-times clear-selection" ></i> 
+              <i class="fas fa-caret-down"></i>
+            </div>
+          <div *ngIf="myForm?.get('jobTitle')?.invalid && purchaseForm.submitted" class="text-danger">Job Title/REQ Name is required</div>
+
+          </div>
+          <div class="col-3">
+            <label for="reqId" class="form-label">REQ ID/Assignment ID</label>
+          <span *ngIf="myForm?.get('reqId')?.invalid" class="text-danger ms-2" >*</span>
+
+            <input type="text" formControlName="reqId" class="form-control">
+          <div *ngIf="myForm?.get('reqId')?.invalid && purchaseForm.submitted" class="text-danger">REQ ID/Assignment ID is required</div>
+
+          </div>
+
+          <div class="col-6">
+            <div>
+              <i class="fas fa-trash dustbin-action" (click)="deleteForm(i)"  style="right: 48px; position: absolute;"></i> 
+            <i class="fas fa-minus minus-action" style="right: 24px; position: absolute;"></i> 
+            </div>
+          </div>
+        </div>
+
+        <hr>
+
+        <div>
+          <div class="input-group px-3">
+            <div class="">
+              <input formControlName="name" class="form-check-input mt-1" type="checkbox">
+            </div>
+            <label for="name" class="ms-2">Monika Goyal Test</label>
+          </div>
+          <div class="row p-3">
+            <div class="col-3">
+              <label for="contactDuration" class="form-label">Contract Duration</label>
+              <input type="text" formControlName="contactDuration" class="form-control" placeholder="Contract Duration                        Month" >
+            </div>
+
+            <div class="col-3">
+              <div class="row p-2" style="margin-top: -10px;">
+                <div class="col-sm">
+                  <label for="billRate" class="form-label">Bill Rate</label>
+                  <input type="text" formControlName="billRate" class="form-control" placeholder="Bill Rate       /hr">
+                </div>
+                <div class="col-sm">
+                  <label for="billRateCurrency" class="form-label">Currency</label>
+                  <div class="custom-select-icon">
+                    <select formControlName="billRateCurrency" class="form-control" required>
+                      <option>USD Dollars $</option>
+                    </select>
+                    <i class="fas fa-times clear-selection"></i> 
+                    <i class="fas fa-caret-down"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-3">
+              <div class="row p-2" style="margin-top: -10px;">
+                <div class="col-sm">
+                  <label for="standardTime" class="form-label">Standard Time BR</label>
+                  <input type="text" formControlName="standardTime" class="form-control" placeholder="STD Time BR       /hr">
+                </div>
+                <div class="col-sm">
+                  <label for="standardCurrency" class="form-label">Currency</label>
+                  <div class="custom-select-icon">
+                    <select formControlName="standardTimeCurrency" class="form-control" required>
+                      <option>USD Dollars $</option>
+                    </select>
+                    <i class="fas fa-times clear-selection"></i> 
+                    <i class="fas fa-caret-down"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-3">
+              <div class="row p-2" style="margin-top: -10px;">
+                <div class="col-sm">
+                  <label for="overTime" class="form-label">Over Time BR</label>
+                  <input type="text" formControlName="overTime" class="form-control" placeholder="Over Time BR       /hr">
+                </div>
+                <div class="col-sm">
+                  <label for="overTimeCurrency" class="form-label">Currency</label>
+                  <div class="custom-select-icon">
+                    <select formControlName="overTimeCurrency" class="form-control" required>
+                      <option>USD Dollars $</option>
+                    </select>
+                    <i class="fas fa-times clear-selection"></i> 
+                    <i class="fas fa-caret-down"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div>
+          <div class="input-group px-3">
+            <div class="">
+              <input formControlName="name1" class="form-check-input mt-1" type="checkbox">
+            </div>
+            <label for="name1" class="ms-2">Monika Goyal Test</label>
+          </div>
+          <div class="row p-3">
+            <div class="col-3">
+              <label for="contactDuration1" class="form-label">Contract Duration</label>
+              <input type="text" formControlName="contactDuration1" class="form-control" placeholder="Contract Duration                        Month" >
+            </div>
+
+            <div class="col-3">
+              <div class="row p-2" style="margin-top: -10px;">
+                <div class="col-sm">
+                  <label for="billRate1" class="form-label">Bill Rate</label>
+                  <input type="text" formControlName="billRate1" class="form-control" placeholder="Bill Rate       /hr">
+                </div>
+                <div class="col-sm">
+                  <label for="billRateCurrency1" class="form-label">Currency</label>
+                  <div class="custom-select-icon">
+                    <select formControlName="billRateCurrency1" class="form-control" required>
+                      <option>USD Dollars $</option>
+                    </select>
+                    <i class="fas fa-times clear-selection"></i> 
+                    <i class="fas fa-caret-down"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-3">
+              <div class="row p-2" style="margin-top: -10px;">
+                <div class="col-sm">
+                  <label for="standardTime1" class="form-label">Standard Time BR</label>
+                  <input type="text" formControlName="standardTime1" class="form-control" placeholder="STD Time BR       /hr">
+                </div>
+                <div class="col-sm">
+                  <label for="standardCurrency1" class="form-label">Currency</label>
+                  <div class="custom-select-icon">
+                    <select formControlName="standardTimeCurrency1" class="form-control" required>
+                      <option>USD Dollars $</option>
+                    </select>
+                    <i class="fas fa-times clear-selection"></i> 
+                    <i class="fas fa-caret-down"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-3">
+              <div class="row p-2" style="margin-top: -10px;">
+                <div class="col-sm">
+                  <label for="overTime1" class="form-label">Over Time BR</label>
+                  <input type="text" formControlName="overTime1" class="form-control" placeholder="Over Time BR       /hr">
+                </div>
+                <div class="col-sm">
+                  <label for="overTimeCurrency1" class="form-label">Currency</label>
+                  <div class="custom-select-icon">
+                    <select formControlName="overTimeCurrency1" class="form-control" required>
+                      <option>USD Dollars $</option>
+                    </select>
+                    <i class="fas fa-times clear-selection"></i> 
+                    <i class="fas fa-caret-down"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </form>
+  </div>
+
+  <div class="mt-3">
+    <button class="bg-transparent border-1 px-4 py-1 ms-2 me-4 rounded-4 btn-custom" style="position: absolute; right: 100px;" (click)="resetForm()">Reset</button>
+    <button class="bg-transparent border-1 px-4 py-1 ms-2 me-4 rounded-4 btn-custom" style="position: absolute; right: 0px;"(click)="onSubmit()">Save</button>
+  </div>
+
+</form>
+
+
+</div>
